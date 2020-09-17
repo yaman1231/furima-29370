@@ -71,4 +71,3 @@
 
 ## ER図
 
-https://app.diagrams.net/#G1Jq_tZD8CcRfdoYjAHJIP3yi2JBRH89iQ
