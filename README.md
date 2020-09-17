@@ -26,7 +26,6 @@
 | user            | references | null:false, foreign_key:true |
 | name            | string     | null: false                  |
 | description     | text       | null: false                  |
-| images          | integer    | null: false                  |
 | category        | integer    | null: false                  |
 | condition       | integer    | null: false                  |
 | postage_payer   | integer    | null: false                  |
