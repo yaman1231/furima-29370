@@ -21,17 +21,17 @@
 
 ## items テーブル
 
-| Column           | Type       | Options                      |
-| ---------------- | ---------- | ---------------------------- |
-| user             | references | null:false, foreign_key:true |
-| name             | string     | null: false                  |
-| description      | text       | null: false                  |
-| category_id      | integer    | null: false                  |
-| condition_id     | integer    | null: false                  |
-| postage_payer_id | integer    | null: false                  |
-| prefecture_id    | integer    | null: false                  |
-| handling_time_id | integer    | null: false                  |
-| price            | string     | null: false                  |
+| Column           | Type       | Options                       |
+| ---------------- | ---------- | ----------------------------  |
+| user             | references | null: false, foreign_key:true |
+| name             | string     | null: false                   |
+| description      | text       | null: false                   |
+| category_id      | integer    | null: false                   |
+| condition_id     | integer    | null: false                   |
+| postage_payer_id | integer    | null: false                   |
+| prefecture_id    | integer    | null: false                   |
+| handling_time_id | integer    | null: false                   |
+| price            | string     | null: false                   |
 
 ### Association
 
@@ -43,6 +43,45 @@
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :handling_time
 - has_one_attached :image
+
+
+## category (active_hash)
+
+| Column           | Type       | Options        |
+| ---------------- | ---------- | -------------- |
+| category         | string     | null: false    |
+
+## condition (active_hash)
+
+| Column           | Type       | Options        |
+| ---------------- | ---------- | -------------- |
+| condition        | string     | null: false    |
+
+## postage_payer (active_hash)
+
+| Column           | Type       | Options        |
+| ---------------- | ---------- | -------------- |
+| postage_payer    | string     | null: false    |
+
+## prefecture (active_hash)
+
+| Column           | Type       | Options        |
+| ---------------- | ---------- | -------------- |
+| prefecture       | string     | null: false    |
+
+## handling_time (active_hash)
+
+| Column           | Type       | Options        |
+| ---------------- | ---------- | -------------- |
+| handling_time    | string     | null: false    |
+
+## images (active_storage)
+
+| Column  | Type       | Options         |
+| ------- | ---------- | --------------- |
+| image   | string     | null: false     |
+| content | string     | null: false     |
+
 
 
 ## purchases テーブル
@@ -76,4 +115,3 @@
 
 
 ## ER図
-
