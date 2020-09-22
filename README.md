@@ -31,7 +31,7 @@
 | postage_payer_id | integer    | null: false                  |
 | prefecture_id    | integer    | null: false                  |
 | handling_time_id | integer    | null: false                  |
-| price            | integer    | null: false                  |
+| price            | string     | null: false                  |
 
 ### Association
 
@@ -42,6 +42,7 @@
 - belongs_to_active_hash :postage_payer
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :handling_time
+- has_one_attached :image
 
 
 ## purchases テーブル

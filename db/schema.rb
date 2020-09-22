@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_09_22_070730) do
     t.integer "postage_payer_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "handling_time_id", null: false
-    t.integer "price", null: false
+    t.string "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_items_on_user_id"
