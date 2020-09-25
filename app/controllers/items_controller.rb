@@ -23,6 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    return redirect_to action: :show if @item.user_id != current_user.id
   end
 
   def update
