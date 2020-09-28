@@ -105,6 +105,7 @@
 | post_code     | string     | null: false                    |
 | prefecture    | integer    | null: false                    |
 | city          | string     | null: false                    |
+| street_number | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | string     | null: false, uniqueness:true   |
 | purchase      | references | null: false, foreign_key: true |
