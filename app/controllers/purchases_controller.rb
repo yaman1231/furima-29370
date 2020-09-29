@@ -4,17 +4,15 @@ class PurchasesController < ApplicationController
 
   def index
     @purchase_address = PurchaseAddress.new
-    if @item.user_id == current_user.id || @item.purchase != nil
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.user_id == current_user.id || !@item.purchase.nil?
   end
 
   def create
     @purchase_address = PurchaseAddress.new(address_params)
     if @purchase_address.valid?
-     pay_item
+      pay_item
       @purchase_address.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render 'index'
     end
@@ -27,11 +25,11 @@ class PurchasesController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: purchase_params[:token],
-      currency:'jpy'
+      currency: 'jpy'
     )
   end
 
@@ -40,10 +38,10 @@ class PurchasesController < ApplicationController
   end
 
   def address_params
-   params.permit(:token, :post_code,:prefecture_id, :city, :street_number, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.permit(:token, :post_code, :prefecture_id, :city, :street_number, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
   def move_to_index
-   redirect_to new_user_session_path unless user_signed_in?
+    redirect_to new_user_session_path unless user_signed_in?
   end
 end
