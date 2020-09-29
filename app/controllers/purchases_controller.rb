@@ -1,8 +1,12 @@
 class PurchasesController < ApplicationController
+  before_action :move_to_index
   before_action :set_item_id, only: [:index, :create]
 
   def index
     @purchase_address = PurchaseAddress.new
+    if @item.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 
   def create
@@ -35,7 +39,11 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
- def address_params
-  params.permit(:token, :post_code,:prefecture_id, :city, :street_number, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
- end
+  def address_params
+   params.permit(:token, :post_code,:prefecture_id, :city, :street_number, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
+  end
+
+  def move_to_index
+   redirect_to new_user_session_path unless user_signed_in?
+  end
 end
